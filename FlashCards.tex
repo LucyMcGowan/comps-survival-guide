@@ -1,0 +1,1761 @@
+\documentclass[avery5388,grid,frame]{flashcards}
+\cardfrontstyle[\large\slshape]{headings}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}\DeclareMathOperator*{\argmax}{\arg\!\max}\DeclareMathOperator*{\argmin}{\arg\!\min}
+\usepackage{wasysym}
+\usepackage{needspace,setspace,relsize,url}
+ \cardbackstyle{empty}
+
+ \begin{document}
+
+ \cardfrontfoot{Fundamentals of Probability}
+
+\begin{flashcard}[Definition]{Bonferroni's Inequality}
+\begin{center}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+P(A, B)\geq P(A)+P(B)-1
+\end{equation*}
+This is useful if you are asked to give the minimum of P(A,B) 
+\end{center}
+\end{flashcard}
+\begin{flashcard}[Definition]{Bayes' Rule}
+\begin{center}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+P(A|B)=\frac{P(B|A)P(A)}{P(B)}
+\end{equation*}
+\end{center}
+\end{flashcard}
+\begin{flashcard}[Definition]{Sensitivity and Specificity}
+\begin{center}
+\bigskip\bigskip\bigskip
+Sensitivity=$P(T=1|D=1)$\\
+\bigskip
+Specificity=$P(T=0|D=0)$
+\end{center}
+\end{flashcard}
+\begin{flashcard}[Equation]{Change of Variable}
+\begin{center}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+f_Y(y)=f_X(g^{-1}(y))\Big|\frac{d}{dy}g^{-1}(g)\Big|
+\end{equation*}
+\bigskip\\
+Note that this only works for 1-1 monotonic functions
+\end{center}
+\end{flashcard}
+\begin{flashcard}[Equation]{Moment Generating Function}
+\begin{center}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+E[e^{xt}]=\int_xe^{xt}f(x)dx
+\end{equation*}
+\bigskip\\
+Then evaluate the derivative for each moment at $t=0$. For example, the second moment would be the second derivative of the mgf evaluated at $t=0$.
+\end{center}
+\end{flashcard}
+\begin{flashcard}[Equation]{Location-Scale shift}
+\begin{center}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+f_X(x)=\frac{1}{\sigma}f_Z\left(\frac{x-\mu}{\sigma}\right)
+\end{equation*}
+\bigskip\\
+Basically, multiply the pdf by $\frac{1}{\sigma}$ and replace z with $\frac{x-\mu}{\sigma}$
+\end{center}
+\end{flashcard}
+\begin{flashcard}[Form]{Exponential Family}
+\begin{center}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+f(x|\theta)=h(x)c(\theta)\exp\left\{\sum_{i=1}^kw_i(\theta)t_i(x)\right\}
+\end{equation*}
+\bigskip\\
+If a family is exponential and there is a non-empty parameter space, it is considered ``complete". Therefore $t(x)$ is MSS.
+\end{center}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{Mgf when X $\perp$ Y }
+\begin{center}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+Mgf(x+y)=Mgf(x)Mgf(y)
+\end{equation*}
+\bigskip\\
+This is cool because it shows that if $X\perp Y$ and $X\sim N(\mu_x, \sigma_x^2)$ and $Y\sim N(\mu_y,\sigma_y^2)$, then $X+Y\sim N(\mu_x+\mu_y,\sigma_x^2+\sigma_y^2)$
+\end{center}
+\end{flashcard}
+\begin{flashcard}[Equation]{Bivariate Transformations}
+\begin{center}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+f_{u,v}(u,v)=f_{x,y}(h_1(u,v),h_2(u,v))|J|
+\end{equation*}
+\bigskip
+This is for continuous. DON'T FORGET THE JACOBIAN. or Jacob Marley will come after you.
+\end{center}
+\end{flashcard}
+\begin{flashcard}[Equation]{Iterative Expectations}
+\begin{center}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+E[Y]=E_X[E_{Y|X}[Y|X]]
+\end{equation*} 
+\end{center}
+\end{flashcard}
+\begin{flashcard}[Equation]{Iterative Variance}
+\begin{center}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+Var[Y]=E_X[Var[Y|X]]+Var_X[E[Y|X]]
+\end{equation*}
+\end{center}
+\end{flashcard}
+\begin{flashcard}[Definition]{Covariance}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+cov(X,Y)&=E[(X-\mu_X)(Y-\mu_Y)]\\
+&=E[XY]-\mu_X\mu_Y
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Definition]{Correlation}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+corr(X,Y)=\frac{cov(X,Y)}{\sigma_x\sigma_y}
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Definition]{Chebyshev's Inequality}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+P(g(X)\geq r)&\leq \frac{E(g(X))}{r}\\
+P(|X-\mu|\geq t\sigma)&\leq\frac{1}{t^2}
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Definition]{Jensen's Inequality}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+E(g(x))\geq g(E(x))
+\end{align*}}
+\bigskip\\
+This holds if $g(x)$ is a convex function. That means it has a positive 2nd derivative, like a smile. I have high expectations!
+\end{flashcard}
+\begin{flashcard}[Definition]{Holder's Inequality}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+|E(XY)|\leq E|XY|\leq (E(|X|^p))^{1/p}(E(|Y|^q))^{1/q}\\
+\frac{1}{p}+\frac{1}{q}=1
+\end{align*}}
+\bigskip\\
+\begin{center}
+Cauchy-Schwartz is a special case where $p=q=2$. Can use to show correlation is bounded by -1 and 1.
+\end{center}
+\end{flashcard}
+\begin{flashcard}[Proof]{Correlation is Bounded by -1 and 1}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+\Big|cov(X,Y)\Big|&=\Big|E[(X-\mu_x)(Y-\mu_y)]\Big|\\
+&\leq(E|X-\mu_x|^2)^{1/2}(E|Y-\mu_y|^2)^{1/2}\leq\sqrt{\sigma_x^2}\sqrt{\sigma_y^2}\\
+&\leq\sigma_x\sigma_y\\
+\Big|corr(X,Y)\Big|&=\Big|\rho\Big|=\Big|\frac{cov(X,Y)}{\sigma_x\sigma_y}\Big|=\frac{\Big|cov(X,Y)\Big|}{\sigma_x\sigma_y}\leq\frac{\sigma_x\sigma_y}{\sigma_x\sigma_y}=1
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Equation]{Order Statistics PDF}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+\frac{n!}{(j-1)!(n-j)!}f(x)[F(x)]^{j-1}[1-F(x)]^{n-j}
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Equation]{Order Statistics CDF}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+\sum_{i=j}^n{n\choose i}F(x)^i[1-F(x)]^{n-i}
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Equation]{Joint PDF of Order Statistics}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+&\frac{n!}{(l-1)!(m-l-1)!(n-m)!}\\
+&F(x_l)^{l-1}f(x_l)f(x_m)[F(x_m)-F(x_l)]^{m-l-1}[1-F(x_m)]^{n-m}
+\end{align*}}
+\bigskip\\
+soooo its so long it can't fit on one line...but this is all one equation. memorize it fooooool.
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{If $X_i\overset{iid}{\sim}Unif(0,1)$ the pdf of the kth order statistic}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+Beta(k,n-k+1)
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Proof]{Convergence in Probability}
+\bigskip
+\begin{center}
+Convergence in probability means that the estimator is consistent. We can prove something converges in probability using Chebychev's. Also, the Weak Law of Large Numbers is that $\bar{X}\overset{p}{\rightarrow}\mu$.
+{\begin{align*}
+P(|\bar{X}_n-X|\geq \epsilon)&\leq\frac{E[(\bar{X}_n-\mu)^2]}{\epsilon^2}\\
+&\leq\frac{Var(\bar{X}_n)}{\epsilon^2}=\frac{\sigma^2}{n\epsilon^2}\\
+\lim_{n\rightarrow\infty}P(|\bar{X}_n-X|\geq \epsilon)&\leq\lim_{n\rightarrow\infty}\frac{\sigma^2}{n\epsilon^2}\\
+\lim_{n\rightarrow\infty}\frac{\sigma^2}{n\epsilon^2}=0\\
+\lim_{n\rightarrow\infty}P(|\bar{X}_n-X|\geq \epsilon)=0
+\end{align*}}
+\end{center}
+\end{flashcard}
+\begin{flashcard}[Definition]{Convergence Almost Surely}
+\bigskip
+\begin{center}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+P(\lim_{n\rightarrow\infty}|\bar{X}_n-X|\geq \epsilon)=0
+\end{align*}}
+Convergence almost surely implies convergence in probability which implies convergence in distribution.
+\end{center}
+\end{flashcard}
+\begin{flashcard}[Definition]{Convergence in Distribution}
+\bigskip
+\begin{center}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+X_n\overset{d}{\rightarrow}X\iff \lim_{n\rightarrow\infty}F_{x_n}(x)=F_x(x) \textrm{ for all x where $F_x(x)$ is continuous}
+\end{align*}}
+The CLT is convergence in distribution. Coming to a flashcard near you - proof of the CLT using MGFs. Yeah. You can't wait.
+\end{center}
+\end{flashcard}
+\begin{flashcard}[Definition]{Slutsky's}
+\bigskip
+\begin{center}
+If $X_n\overset{d}{\rightarrow}X$ and $Y_n\overset{p}{\rightarrow}a$ then:\\
+$Y_nX_n\overset{d}{\rightarrow}aX$\\
+and $Y_n+X_n\overset{d}{\rightarrow}a+X$
+{\begin{align*}
+\frac{\sqrt{n}(\bar{X}-\mu)}{S_n}&=\frac{\sqrt{n}(\bar{X}-\mu)}{\sigma}\frac{\sigma}{S_n}\overset{d}{\rightarrow}N(0,1)
+\intertext{because}
+\frac{\sqrt{n}(\bar{X}-\mu)}{\sigma}&\overset{d}{\rightarrow}N(0,1)\\
+\frac{\sigma}{S_n}&\overset{p}{\rightarrow}1
+\end{align*}}
+\end{center}
+\end{flashcard}
+\begin{flashcard}[Definition]{Delta Method}
+\begin{center}
+\bigskip\bigskip\bigskip
+1st order:
+\begin{equation*}
+\sqrt{n}(g(X_n)-g(\theta))\overset{d}{\rightarrow}N(0,g'(\theta)^2var(X_n))
+\end{equation*}
+2nd order:
+\begin{equation*}
+n(g(X_n)-g(\theta))\overset{d}{\rightarrow}\frac{Var(X_n)}{2}g''(\theta)\chi^2_1
+\end{equation*}
+\end{center}
+\end{flashcard}
+\begin{flashcard}[Definition]{Accept-Reject Algorithm}
+\bigskip\bigskip\bigskip
+To generate Y from $f(y)$:
+\begin{enumerate}
+\item Generate $v$ from a known distribution, $f(v)$, with support that contains the support of $Y$.
+\item Calculate $M=\sup_y\frac{f_Y(y)}{f_V(y)}$ (the supremum of $Y$ in $V$)
+\item Generate $U\sim Unif(0,1)$ if $U\leq\frac{1}{M}\frac{f_Y(v)}{f_V(v)}$ then accept, otherwise reject.
+\end{enumerate}
+\end{flashcard}
+\begin{flashcard}[Distribution]{Bernoulli}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+X&\sim Bin(1,p)\\
+f(x)&=p^x(1-p)^{1-x}\textrm{  for } x=0,1\\
+E(x)&=p\\
+Var(x)&=p(1-p)
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Distribution]{Binomial}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+X&\sim Bin(n,p)\\
+f(x)&={n\choose x}p^x(1-p)^{n-x}\\
+E(x)&=np\\
+Var(x)&=np(1-p)
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Distribution]{Geometric}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+X&\sim Geometric(p) \textrm{ or } X\sim NegBinom(1,p)\\
+f(x)&=p(1-p)^{x-1}\textrm{  for x=1,...}\\
+E(x)&=\frac{1}{p}\\
+Var(x)&=\frac{1-p}{p^2}
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Distribution]{Negative Binomial}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+X&\sim NegBinom(r,p)\\
+f(x)&={x-1\choose r-1}p^r(1-p)^{x-r} \textrm{  for x=r,r+1,...}\\
+E(x)&=\frac{r}{p}\\
+Var(x)&=\frac{r(1-p)}{p^2}
+\end{align*}}
+\bigskip\\
+where x is the number of experiments needed to get r successes
+\end{flashcard}
+\begin{flashcard}[Distribution]{Hypergeometric}
+\bigskip\bigskip\bigskip
+$N=\#$ of balls, $K=\#$ selected $M=\#$ of successes $X=\#$ of successes in your sample
+{\begin{align*}
+f(x)&=\frac{{M\choose X}{N-M\choose K-X}}{{N\choose K}}\\
+E(x)&=\frac{KM}{N}\\
+Var(x)&=\frac{KM}{N}\left(\frac{N-M}{N}\right)\left(\frac{N-K}{N-1}\right)
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Distribution]{Discrete Uniform}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+X&\sim DUnif(a,b)\\
+f(x)&=\frac{1}{b-a+1} \textrm{ for x=a,...,b}\\
+E(x)&=\frac{a+b}{2}\\
+Var(x)&=\frac{(b-a+1)^2-1}{12}
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Distribution]{Poisson}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+X&\sim Pois(\lambda)\\
+f(x)&=\frac{e^{-\lambda}\lambda^x}{x!}\textrm{  for x=0,1,2...}\\
+E(x)&=\lambda\\
+Var(x)&=\lambda
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Distribution]{Uniform}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+X&\sim Unif(a,b)\\
+f(x)&=\frac{1}{b-a}\textrm{  a$<$x$<$b}\\
+E(x)&=\frac{a+b}{2}\\
+Var(x)&=\frac{(b-a)^2}{12}
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Distribution]{Gamma}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+X&\sim Gamma(\alpha,\beta)\\
+f(x)&=\frac{1}{\Gamma(\alpha)\beta^\alpha}x^{\alpha-1}e^{-x/\beta}\textrm{  for $x>0$, $\alpha>0$, $\beta>0$}\\
+E(x)&=\alpha\beta\\
+Var(x)&=\alpha\beta^2
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Distribution]{Chi-square}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+X&\sim \chi^2(p)\\
+f(x)&=\frac{1}{\Gamma(p/2)2^{p/2}}x^{p/2-1}e^{-x/2}\\
+E(x)&=p\\
+Var(x)&=2p
+\end{align*}}
+special case of Gamma where $\alpha=p/2$ and $\beta=2$.
+\end{flashcard}
+\begin{flashcard}[Distribution]{Exponential}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+X&\sim Exp(\beta)\\
+f(x)&=\beta e^{-x\beta}\textrm{  for $x>0$, $\beta>0$}\\
+E(x)&=\frac{1}{\beta}\\
+Var(x)&=\frac{1}{\beta^2}
+\end{align*}}
+Special case of Gamma where $\alpha=1$
+\end{flashcard}
+\begin{flashcard}[Distribution]{Normal}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+X&\sim N(\mu,\sigma^2)\\
+f(x)&=\frac{1}{\sqrt{2\pi\sigma^2}}\exp\left\{-\frac{(x-\mu)^2}{2\sigma^2}\right\}\textrm{  for $-\infty< x<\infty$, $-\infty<\mu<\infty$, $\sigma>0$}\\
+E(x)&=\mu\\
+Var(x)&=\sigma^2
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Distribution]{Beta}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+X&\sim Beta(\alpha,\beta)\\
+f(x)&=\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha-1}(1-x)^{\beta-1}\textrm{  for $0<x<1$, $\alpha>0$, $\beta>0$}\\
+E(x)&=\frac{\alpha}{\alpha+\beta}\\
+Var(x)&=\frac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Distribution]{Cauchy}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+X&\sim Cauchy(\theta)\\
+f(x)&=\frac{1}{\pi(1+(x-\theta)^2)}\textrm{  for $-\infty<x<\infty$, $-\infty<\theta<\infty$}
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{$e^t$}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+\lim_{n\rightarrow\infty}\left(1+\frac{t}{n}\right)^n
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{Binomial Series}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+\sum_{v=0}^u\frac{u!}{(u-v)!v!}\theta^{u-v}\lambda^v=(\theta+\lambda)^u
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{Geometric Series}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+\sum_{i=1}^nq^{i-1}=\frac{1-q^n}{1-q}
+\end{align*}}
+\end{flashcard}
+ \cardfrontfoot{Statistical Inference}
+ \begin{flashcard}[Definition]{Positive Predictive Value}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+P(D^+|T^+)=\left[1+\frac{P(T^+|D^-)}{P(T^+|D^+)}\frac{P(D^-)}{P(D^+)}\right]^{-1}
+\end{align*}}
+\end{flashcard}
+ \begin{flashcard}[Definition]{Kullback-Leibler Divergence}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+KLD(g,f)=E_g\left[\log\frac{g(X)}{f(X)}\right]\geq0
+\end{align*}}
+Measures how much information you lose by using the worse distribution.
+\end{flashcard}
+ \begin{flashcard}[Definition]{Hellinger Distance}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+KLD(g,f)\geq2[H(f,g)]^2
+\end{align*}}
+Lower bound for the KLD
+\end{flashcard}
+ \begin{flashcard}[Proof]{LR is bounded by $1/k$}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+P_g\left(\frac{\prod f(x_i)}{\prod g(x_i)}>k\right)&\leq\frac{E_g\left[\frac{\prod f(x_i)}{\prod g(x_i)}\right]}{k}=\frac{1}{k}\\\\
+E_g\left[\frac{\prod f(x_i)}{\prod g(x_i)}\right]&=\int \frac{\prod f(x_i)}{\prod g(x_i)}\prod g(x_i)dx\\
+&=\int\prod f(x_i)dx=\int P_f(X_1,...,X_n)dx=1
+\end{align*}}
+Proof by Markov's inequality. This bound holds if we look at the data as it accumulates.
+\end{flashcard}
+ \begin{flashcard}[Proof]{Asymptotic behavior of LR}
+\bigskip
+As evidence accumulates, the LR converges to 0
+{\begin{align*}
+LR_n=\exp\left\{\log\prod\frac{f(x_i)}{g(x_i)}\right\}&=\exp\left\{\sum\log f(x_i)-\sum \log g(x_i)\right\}\\
+&=\exp\left\{n\left[\frac{1}{n}\sum \log f(x_i)-\frac{1}{n}\sum\log g(x_i)\right]\right\}\\
+\textrm{From the LLN: }\frac{1}{n}\sum\log\frac{f(x_i)}{g(x_i)}&\rightarrow E_g\left[\log\frac{f(x_i)}{g(x_i)}\right]\leq \log E_g\left[\frac{f(x_i)}{g(x_i)}\right] \textrm{ by Jensen's }\\
+& \log E_g\left[\frac{f(x_i)}{g(x_i)}\right] =\log(1)=0\\ 
+\textrm{ Therefore this portion}&\textrm{ some negative number, call it -c}\\
+\prod\frac{f(x_i)}{g(x_i)}\rightarrow \lim_{n\rightarrow\infty}e^{n[-c]}=0
+\end{align*}}
+\end{flashcard}
+ \begin{flashcard}[Proof]{Convergence of the posterior}
+Due to the LR convergence properties, the posterior converges as well. (Note this proof is in the discrete case).
+{\begin{align*}
+X_1,...,X_n\overset{iid}{\sim}f(X;\theta_0)\\
+P(\theta=\theta_0|\underbar{X})=\left[1+\sum_{\theta\neq\theta_0}\frac{P(\underbar{X}|\theta)}{P(\underbar{X}|\theta_0)}\frac{P(\theta)}{P(\theta_0)}\right]^{-1}\\
+\frac{P(\underbar{X}|\theta)}{P(\underbar{X}|\theta_0)}\rightarrow 0\textrm{ By LR convergence principle}\\
+\frac{P(\underbar{X}|\theta)}{P(\underbar{X}|\theta_0)}\frac{P(\theta)}{P(\theta_0)}\rightarrow 0 \textrm{ as } n\rightarrow \infty\textrm{ therefore }\sum_{\theta\neq\theta_0}\frac{P(\underbar{X}|\theta)}{P(\underbar{X}|\theta_0)}\frac{P(\theta)}{P(\theta_0)}\rightarrow 0\\
+P(H_0|\underbar{X})\rightarrow 1\textrm{ as } n\rightarrow\infty
+\end{align*}}
+\end{flashcard}
+ \begin{flashcard}[Definition]{Rational for Maximum Likelihood}
+ \bigskip\bigskip\bigskip\bigskip
+Because $\hat{\theta}$ maximizes the likelihood function, it is the parameter value that is best supported by the data by the Law of Likelihood.
+\end{flashcard}
+ \begin{flashcard}[Definition]{Invariance of the MLE}
+ \bigskip\bigskip\bigskip\bigskip
+If $\hat{\theta}$ is the MLE for $\theta$ then $g(\hat{\theta})$ is the MLE for $g(\theta)$ as long as $g(\theta)$ is a 1-1 function of $\theta$.
+\end{flashcard}
+ \begin{flashcard}[Definition]{Bias}
+ \bigskip\bigskip\bigskip
+{\begin{align*}
+E[\hat{\theta}-\theta]=b(\hat{\theta})
+\end{align*}}
+\end{flashcard}
+ \begin{flashcard}[Definition]{Variance}
+ \bigskip\bigskip\bigskip
+{\begin{align*}
+E[(\hat{\theta} -E[\hat{\theta}])^2]
+\end{align*}}
+\end{flashcard}
+ \begin{flashcard}[Definition]{MSE}
+ \bigskip\bigskip\bigskip
+{\begin{align*}
+E[(\hat{\theta}-\theta)^2]\\
+=Var[\hat{\theta}]+b^2(\hat{\theta})
+\end{align*}}
+\end{flashcard}
+ \begin{flashcard}[Definition]{Consistency}
+ \bigskip\bigskip\bigskip
+{\begin{align*}
+\hat{\theta}\rightarrow\theta \textrm{ as } n\rightarrow\infty \textrm{ in probability, a.s., etc.}
+\end{align*}}
+This implies that the limiting bias is 0.
+\end{flashcard}
+ \begin{flashcard}[Definition]{Biases of MLEs}
+ \bigskip\bigskip\bigskip
+MLEs are often biased. For example:
+\begin{itemize}
+\item The MLE of the variance in the Normal case has a slight \textbf{negative} bias $-\frac{\sigma^2}{n}$. This goes to 0 in large samples
+\item Poisson mean inverse - the bias is undefined! zabert alert!
+\end{itemize}
+\end{flashcard}
+ \begin{flashcard}[Definition]{Bayes Estimator}
+ \bigskip\bigskip\bigskip
+Trade some bias for a reduction in variance.
+{\begin{align*}
+f(\theta|\underbar{x})=\frac{f(\underbar{X}|\theta)f(\theta)}{\int_{\Theta}f(\underbar{X}|\theta)f(\theta)d\theta}
+\end{align*}}
+Here, a posterior mean is achieved by shrinking the sample mean towards the prior mean.
+\end{flashcard}
+ \begin{flashcard}[Proof]{Consistency of MLEs}
+ \bigskip\bigskip\bigskip
+To show consistency:
+{\begin{align*}
+\hat{\theta}_n\overset{p}{\rightarrow}\theta \textrm{ as } n\rightarrow \infty\\
+\textrm{In other words } \hat{\theta}_n-\theta=o_p(1)\\
+\textrm{\textbf{Method 1} }P(|\hat{\theta}_n-\theta)\geq\epsilon)\rightarrow 0\\ 
+\textrm{\textbf{Method 2} quadratic mean } MSE(\hat{\theta}_n)=Var(\hat{\theta}_n)+b^2(\hat{\theta}_n)\rightarrow 0\\
+\end{align*}}
+If you can show that bias$\rightarrow 0$ and var$\rightarrow 0$ then $\hat{\theta}_n\overset{qm}{\rightarrow}\theta$ which implies $\hat{\theta}_n\overset{p}{\rightarrow}\theta$.
+\end{flashcard}
+ \begin{flashcard}[Pro Tip]{When will the MLE not be consistent?}
+ \bigskip
+When the number of parameters is increasing as $n\rightarrow\infty$. Here is an example where the MLE is not consistent from Neyman-Scott:
+{\begin{align*}
+Y_{11},Y_{12}&\sim N(\mu_1,\sigma^2)\\
+Y_{21},Y_{22}&\sim N(\mu_2,\sigma^2)\\
+.&\sim.\\
+.&\sim.\\
+Y_{n1},Y_{n2}&\sim N(\mu_n,\sigma^2)\\
+\hat{\sigma^2}&=\sum_{i=1}^n\sum{j=1}^2\frac{(Y_{ij}-\bar{Y}_i)^2}{2n}\\
+\hat{\sigma}^2\overset{p}{\rightarrow}\frac{\sigma^2}{2}
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Definition]{Continuous Mapping Theorem}
+ \bigskip
+This is basically the best theorem out there.
+{\begin{align*}
+X_n\overset{d}{\rightarrow}X&\Rightarrow g(X_n)\overset{d}{\rightarrow}g(X)\\
+X_n\overset{p}{\rightarrow}X&\Rightarrow g(X_n)\overset{p}{\rightarrow}g(X)\\
+X_n\overset{a.s.}{\rightarrow}X&\Rightarrow g(X_n)\overset{a.s.}{\rightarrow}g(X)\\
+\end{align*}}
+Obviously the function has to be continuous for this to work.
+\end{flashcard}
+\begin{flashcard}[Definition]{Conditions for MLE consistency}
+ \bigskip
+\begin{enumerate}
+\item Identifiability 
+\item Compactness of the parameter space (it is sufficient to assume concavity of the log LF and MLE cannot be at the boundary of the parameter space)
+\item Continuity of $L(\theta)$ in $\theta$ - to ensure smoothness and existence of derivatives
+\item Dominance: $|\log f(x;\theta)|<D(x)$  $\forall\theta\in\Theta$
+\end{enumerate}
+\end{flashcard}
+\begin{flashcard}[Definition]{Score Function}
+ \bigskip
+ \begin{itemize}
+\item First derivative of the log-likelihood function
+\item Unbiased estimator of zero
+\end{itemize}
+\end{flashcard}
+\begin{flashcard}[Definition]{Fisher's Information}
+ \bigskip
+Information is the variance of the score function.
+{\begin{align*}
+\mathcal{I}(\theta)=Var(S_i)=E[S_i^2]\\
+\mathcal{I}_n(\theta)=Var\left(\sum S_i\right)=n\mathcal{I}(\theta)
+\end{align*}}
+It can be estimated by:
+{\begin{align*}
+\frac{\sum S_i^2}{n}=\frac{1}{n}\sum_i\left(\frac{\partial \log f(x_i;\theta)}{\partial\theta}\right)^2
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Definition]{Bartlett's Second Identity}
+ \bigskip \bigskip\bigskip\bigskip
+Under the correct model:
+{\begin{align*}
+Var(S_i)=E[S_i^2]=-E[S'_i]
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Proof]{Asymptotic Normality of MLE}
+{\begin{align*}
+l_i&=log f(x_i;\theta)\\
+\intertext{By Taylor Series Expansion:}
+0&=l'_n(\hat{\theta}_n)\approx l'_n(\theta)+(\hat{\theta}_n-theta)l''_n(\theta)+R_n\\
+(\hat{\theta}_n-\theta)&\approx\frac{l'_n(\theta)}{-l''_n(\theta)}\Rightarrow \sqrt{n}(\hat{\theta}_n-\theta)\approx\frac{\frac{1}{\sqrt{n}}l'_n(\theta)}{-\frac{1}{n}l''_n(\theta)}\\
+\sqrt{n}\frac{1}{n}\sum l'_i(\theta)&\overset{d}{\rightarrow}N(0,\mathcal{I}(\theta))\textrm{ by CLT and } -\frac{1}{n}l''_n(\theta)\overset{p}{\rightarrow}\mathcal{I}(\theta)\textrm{by LLN}\\
+\textrm{By Slutsky's }\sqrt{n}(\hat{\theta}_n-\theta)&\overset{d}{\rightarrow}N(0,\frac{1}{\mathcal{I}(\theta)})\\
+\sqrt{n\mathcal{I}(\hat{\theta}_n)}(\hat{\theta}_n-\theta)&\overset{d}{\rightarrow}N(0,1)
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Definition]{What happens to the MLE when the working model fails?}
+\bigskip
+The MLE $\hat{\theta}_n$ converges to $\theta_g$ where:
+{\begin{align*}
+\hat{\theta}_n=\argmax_{\theta\in\Theta}\frac{\sum_i\log f(x_i;\theta)}{n}\rightarrow\argmax_{\theta\in\Theta}E_g[\log f(x_i;\theta)]=\theta_g
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Definition]{Asymptotic Normality of the MLE under Model Failure}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+\sqrt{n}(\hat{\theta}_n-\theta)&\overset{d}{\rightarrow}N(0,a^{-1}ba^{-1}) \textrm{  as } n\rightarrow\infty\\
+\sqrt{\frac{\hat{a}^2n}{\hat{b}}}(\hat{\theta}_n-\theta)&\overset{d}{\rightarrow}N(0,1)
+\intertext{You can make a likelihood robust by:}
+L_R(\theta)=L(\theta)^{\hat{a}/\hat{b}}
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Equation]{Making a likelihood robust}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+L_R(\theta)&=L(\theta)^{\hat{a}/\hat{b}}\\
+\hat{a}&=-\frac{1}{n}\sum\frac{\partial^2\log f(x_i;\hat{\theta}_n)}{\partial\theta^2}\\
+\hat{b}&=\frac{1}{n}\sum\left(\frac{\partial \log f(x_i;\hat{\theta}_n)}{\partial\theta}\right)^2
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Definition]{Unbiased Estimating Equation}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+E[g(\underbar{X};\theta)]=0\textrm{  }\forall\theta\in\Theta
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Definition]{Standardized}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+g_s(\underbar{X};\theta)=\frac{g(\underbar{X};\theta)}{E\left[\frac{\partial g(\underbar{X};\theta)}{\partial\theta}\right] }\textrm{  } \forall\theta\in\Theta
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Examples]{Natural Estimating Equations}
+\bigskip\bigskip\bigskip
+\begin{itemize}
+\item score functions
+\item equations from MOM estimation
+\end{itemize}
+\end{flashcard}
+\begin{flashcard}[Theorem]{Optimality of the Score Function}
+\bigskip
+This is literally the Godambe Theorem of 1960. NOT A JOKE (but what an awesome name!)
+\begin{enumerate}
+\item The variance of a standardized estimating equation is bounded below by $1/\mathcal{I}_n(\theta)$,
+\begin{equation*}
+Var[g_s(\underbar{X};\theta)]=\frac{E_\theta[g^2]}{\left\{E_\theta\left[\frac{\partial g}{\partial\theta}\right]\right\}^2}\geq\frac{1}{E_\theta\left[\left(\frac{\partial\log f}{\partial\theta}\right)^2\right]}
+\end{equation*}
+\item It follows that $\forall$ $g\in G$,
+\begin{equation*}
+\frac{E_\theta[g^2]}{\left\{E_\theta\left[\frac{\partial g}{\partial\theta}\right]\right\}^2}\geq\frac{E_\theta[(g^*)^2]}{\left\{E_\theta\left[\frac{\partial g^*}{\partial\theta}\right]\right\}^2}
+\end{equation*}
+\end{enumerate}
+\end{flashcard}
+\begin{flashcard}[Definition]{Variance of the Standardized Score Function}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+\frac{1}{\mathcal{I}_n(\theta)}
+\end{equation*}
+\end{flashcard}
+\begin{flashcard}[Definition]{What form does the estimating equation have to be to achieve the variance lower bound?}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+g(\underbar{X};\theta)=a(\theta)\left\{T(\underbar{X})-\underbrace{E_\theta[T(\underbar{X})]}_{h(\theta)}\right\}
+\end{equation*}
+\bigskip\\
+This implies that $T(\underbar{X})$ is the best unbiased estimator for $h(\theta)$. This achieves the CRLB.
+\end{flashcard}
+\begin{flashcard}[Definition]{Cramer-Rao Lower Bound}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+Var[T(\underbar{X})]\geq\frac{\{h'(\theta)\}^2}{\mathcal{I}_n(\theta)}
+\end{equation*}
+\bigskip\\
+This is the smallest possible variance for any unbiased estimator of $h(\theta)$
+\end{flashcard}
+\begin{flashcard}[Definition]{Sufficient Statistic}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+f_{\underbar{X}}(\underbar{X};\theta)=g(T(\underbar{X});\theta)h(\underbar{X})
+\end{equation*}
+\bigskip\\
+If the pdf can be factorized as above, then $T(\underbar{X})$ is a sufficient statistic for $\theta$
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{The most famous MSS (oh yeahhh!)}
+\bigskip\bigskip\bigskip
+The likelihood function. le duh, whose class is this any ways?
+\end{flashcard}
+\begin{flashcard}[Definition]{Minimal Sufficient Statistic}
+\bigskip\bigskip\bigskip
+A sufficient statistic is minimally sufficient if it is a function of every other sufficient statistic.
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{Technique to find the MSS}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+\frac{f(\underbar{x};\theta)}{f(\underbar{y};\theta)}=c(\underbar{x},\underbar{y})
+\end{equation*}
+\bigskip\\
+Here $(\underbar{x},\underbar{y})$ is free of $\theta$. So you find a way to set these equal to cross all of the $\theta$s out.
+\end{flashcard}
+\begin{flashcard}[Definition]{Rao-Blackwellization}
+\bigskip\bigskip\bigskip
+Conditioning on a sufficient statistic always yields a better estimator, with a variance less than or equal to that of the first estimator.
+\end{flashcard}
+\begin{flashcard}[Definition]{Ancillary Statistic}
+\bigskip\bigskip\bigskip
+A statistic is ancillary if its distribution does not depend on $\theta$. 
+\end{flashcard}
+\begin{flashcard}[Definition]{Completeness}
+\bigskip\bigskip\bigskip
+A family is complete if
+\begin{equation*}
+E_\theta(g(t))=0\textrm{     }\forall\theta\Rightarrow P_\theta(g(t)=0)=1\textrm{   }\forall\theta
+\end{equation*}
+\bigskip\\
+Exponential families with non-empty parameter space are complete.
+\end{flashcard}
+\begin{flashcard}[Definition]{Basu's Theorem}
+\bigskip\bigskip\bigskip
+If $T(\underbar{X})$ is complete and a minimally sufficient statistic, then $T(\underbar{X})$ is independent of every ancillary statistic.
+\end{flashcard}
+\begin{flashcard}[Definition]{MSS/CSS Lemma}
+\bigskip\bigskip\bigskip
+If a MSS exists, than any CSS is also the MSS.
+\end{flashcard}
+\begin{flashcard}[Definition]{Lehmann-Scheffe Theorem}
+\bigskip\bigskip\bigskip
+If $T(\underbar{X})$ is a CSS (and therefore a MSS), then any statistic $h[T(\underbar{X})]$ with fine variance is the MVUE of its expectation $E[h[T(\underbar{X})]]$. In other words if an estimator is a function of a CSS, then it has the smallest variance among all estimators of its expected value.
+\end{flashcard}
+\begin{flashcard}[Definition]{Checking for completeness}
+\bigskip\bigskip\bigskip
+\begin{enumerate}
+\item Exponential families are complete as longs as the interior of the parameter space is non-empty
+\item A sufficient statistic $T(\underbar{X})$ are complete if no function is first order ancillary.
+\end{enumerate}
+\end{flashcard}
+\begin{flashcard}[Proof]{Lehmann-Scheffe Theorem}
+\textbf{Proof by contradiction}. Suppose $h[T(\underbar{X})]$ is unbiased for $\gamma$ and $h[T(\underbar{X})]$ is not the MVUE of $\gamma$. Then there exists another estimator, say $W(\underbar{X})$ such that $E[W(\underbar{X})]=\gamma$ and $Var[W(\underbar{X})]<Var[h[T(\underbar{X})]]$\\
+Using Rao-Blackwellization, we can create a new estimator $r[T(\underbar{X})]=E[W(\underbar{X})|T(\underbar{X})]$ such that $E[r[T(\underbar{X})]]=\gamma$ and 
+\begin{equation*}
+Var[r[T(\underbar{X})]]<Var[W(\underbar{X})]<Var[h[T(\underbar{X})]]
+\end{equation*}
+Notice both $r[T(\underbar{X})]$ and $h[T(\underbar{X})]$ are unbiased for $\gamma$, so $E[r[T(\underbar{X})]-h[T(\underbar{X})]]=0 \textrm{      }\forall\gamma$\\
+But completeness implies that $r[T(\underbar{X})]=h[T(\underbar{X})]$ with probability 1, so we must have
+\begin{equation*}
+Var[r[T(\underbar{X})]]=Var[h[T(\underbar{X})]]
+\end{equation*}
+Which contradicts the previous inequality. This completes the proof that an unbiased function of the CSS is the MVUE. 
+\end{flashcard}
+\begin{flashcard}[Proof]{Uniqueness of the MVUE}
+If $T(\underbar{X})$ and $S(\underbar{X})$ are MVUE for $\gamma$ then $E[T(\underbar{X})]=E[S(\underbar{X})]=E\left[\frac{T(\underbar{X})+S(\underbar{X})}{2}\right]$. It follows that $Var[T(\underbar{X})]=Var[S(\underbar{X})]$ but
+{\begin{align*}
+Var\left[\frac{T(\underbar{X})+S(\underbar{X})}{2}\right]&=\frac{1}{4}\left[Var[T(\underbar{X})]+Var[S(\underbar{X})]+2Cov[T(\underbar{X}),S(\underbar{X})]\right]\\
+&=\frac{1}{4}[2Var[S(\underbar{X})]+2\rho Var[S(\underbar{X})]]=Var[S(\underbar{X})]\left(\frac{1+\rho}{2}\right)
+\end{align*}}
+This implies that $Var\left[\frac{T(\underbar{X})+S(\underbar{X})}{2}\right]\leq Var[S(\underbar{X})]$. Because $S(\underbar{X})$ is the MVUE, this must be an equality and $Var\left[\frac{T(\underbar{X})+S(\underbar{X})}{2}\right]=Var[S(\underbar{X})]$. By \textbf{Cauchy-Schwartz inequality}, this equality only holds when $S(\underbar{X})=aT(\underbar{X})+b$. We know that $E[T(\underbar{X})]=E[S(\underbar{X})]$ so $a=1$ and $b=0$, therefore P(T(\underbar{X})=S(\underbar{X}))=1
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{Conditionality Principle}
+\bigskip\bigskip\bigskip\bigskip
+Always condition on Ancillary Statistics!
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{Likelihood Prinicple}
+\bigskip\bigskip\bigskip\bigskip
+If two experiments yield likelihood functions that are proportional, then those two sets of data are equivalent as statistical evidence. If likelihoods are the same, evidence should be the same. Inferences can of course be different.
+\end{flashcard}
+\begin{flashcard}[Definition]{Criteria for Confidence Intervals}
+\bigskip\bigskip
+\begin{enumerate}
+\item Consistent estimator of the parameter: $\hat{\theta}_n\overset{p}{\rightarrow}\theta$
+\item Asymptotic Normality: $\sqrt{\mathcal{I}_n(\theta)}(\hat{\theta}_n-\theta)\overset{d}{\rightarrow}N(0,1)$
+\item Consistent estimator of the information: $\frac{\mathcal{I}_n(\hat{\theta}_n)}{\mathcal{I}_n(\theta)}\overset{p}{\rightarrow}1$
+\item (also) Expected Length 
+\item Unbiasedness
+\item Selectivity
+\end{enumerate}
+\end{flashcard}
+\begin{flashcard}[Proof]{Quantile Convergence}
+\bigskip
+\textbf{Proof by contradiction}. Assume that $C_n\not\rightarrow Z$ the either
+\begin{enumerate}
+\item $\exists\delta$ s.t. $\forall n$ $\exists$ $n'>n\Rightarrow C_{n'}>Z+\delta$
+\item $\exists\delta$ s.t. $\forall n$ $\exists$ $n'>n\Rightarrow C_{n'}<Z-\delta$
+\end{enumerate}
+If 1, then $\forall n$ $\exists n'>n$ s.t. $F_{n'}(C_{n'})\geq F_{n'}(Z+\delta)$ and \\
+$\therefore \lim_{n'\rightarrow\infty} F_{n'}(C_{n'})\geq\lim_{n'\rightarrow\infty}F_{n'}(Z+\delta)=F(Z+\delta)>F(Z)$\\\\
+If 2, then $\therefore \lim_{n'\rightarrow\infty} F_{n'}(C_{n'})\leq F(Z-\delta)<F(Z)$\\\\
+However, we know that $F_n(C_n)=\alpha$ $\forall n$ (by definition) and $F(Z)=\alpha$. So both cases lead to a contradiction therefore \\\\$Y_n\overset{d}{\rightarrow}Y\Rightarrow C_n\rightarrow Z$
+\end{flashcard}
+\begin{flashcard}[Proof]{Use of estimate of information in MLE CI}
+\bigskip\bigskip 
+For the approximate large-sample CI for the MLE:
+{\begin{align*}
+\sqrt{n\mathcal{I}(\hat{\theta}_n)}(\hat{\theta}_n-\theta)=\underbrace{\sqrt{n\mathcal{I}(\theta)}(\hat{\theta}_n-\theta)}_{\overset{d}{\rightarrow}N(0,1)}\underbrace{\sqrt{\frac{\mathcal{I}(\hat{\theta}_n)}{\mathcal{I}(\theta)}}}_{\overset{p}{\rightarrow}1}\overset{d}{\rightarrow}N(0,1) 
+\end{align*}}
+\bigskip\\This is a consequence of asymptotic normality of the MLE, Slutsky's and CMT (because $\mathcal{I}(\hat{\theta}_n)$ is a continuous function of $\theta$ so if $\hat{\theta}_n\overset{p}{\rightarrow}\theta$ then $\mathcal{I}(\hat{\theta}_n)\overset{p}{\rightarrow}\mathcal{I}(\theta)$.)
+\end{flashcard}
+\begin{flashcard}[Definition]{Mean Value Theorem}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+\gamma(\hat{\theta}_n)=\gamma(\theta)+\gamma'(\overset{\sim}{\theta})(\hat{\theta}_n-\theta)
+\end{equation*}
+\bigskip\\
+This is helpful because you can rearrange to be:
+\begin{equation*}
+\sqrt{n}(\gamma(\hat{\theta}_n)-\gamma(\theta))=\gamma'(\overset{\sim}{\theta})\sqrt{n}(\hat{\theta}_n-\theta)
+\end{equation*}
+\bigskip\\Which allows you to show asymptotic normality of MLE
+\end{flashcard}
+\begin{flashcard}[Proofish]{Why $\bar{X}_n\pm Z_{\alpha/2}s/\sqrt{n}$ works}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+\frac{\sqrt{n}(\bar{X}_n-\theta)}{s}=\underbrace{\frac{\sqrt{n}(\bar{X}_n-\theta)}{\sigma}}_{\overset{d}{\rightarrow}N(0,1)}\underbrace{\frac{\sigma}{s}}_{\overset{p}{\rightarrow}1}\overset{d}{\rightarrow}N(0,1) \textrm{  as } n\rightarrow\infty
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{When is the $t$-interval exact?}
+\bigskip\bigskip\bigskip
+The $t$-interval is exact when $X_i\sim Normal$ because the pivot $\sqrt{n}(\bar{X}_n-\theta)/s$ is exactly $t^{n-1}$. It is approximately correct in large samples when the normality assumption fails because $t_{\alpha/2}^{n-1}\rightarrow Z_{\alpha/2}$ by the quantile convergence.
+\end{flashcard}
+\begin{flashcard}[Proof]{$t$-interval is robust to non-normality in large samples because...}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+P\left(\frac{\sqrt{n}|\bar{X}_n-\theta|}{s}\leq t_{\alpha/2}^{n-1}\right)=P\left(\underbrace{\frac{\sqrt{n}|\bar{X}_n-\theta|}{\sigma}}_{\overset{d}{\rightarrow}N(0,1)}\underbrace{\frac{\sigma}{s}}_{\overset{p}{\rightarrow}1}\underbrace{\frac{Z_{\alpha/2}}{t_{\alpha/2}^{n-1}}}_{\overset{p}{\rightarrow}1}\leq Z_{\alpha/2}\right)\rightarrow1-\alpha
+\end{equation*}
+\end{flashcard}
+\begin{flashcard}[Equation]{Robust variance estimator of Normal Linear Regression}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+\hat{\Lambda}=n(X'W^{-1}X)^{-1}X'W^{-1}diag\{r_i^2\}W^{-1}X(X'W^{-1}X)^{-1}
+\end{equation*}
+Weighted least squares is just least squares after scaling the data by the variance.
+\end{flashcard}
+\begin{flashcard}[Definition]{Robust Large Sample Intervals}
+\bigskip\bigskip\bigskip
+Basically, the same as before, just raise to the $b/a$ in other words our new variance is just $b/a^2$. To estimate this:
+\begin{equation*}
+\hat{\lambda}=\frac{n\sum\left(\frac{\partial l_i(\hat{\theta}_n)}{\partial\theta}\right)^2}{[\mathcal{I}_n(\hat{\theta}_n)]^2}
+\end{equation*}
+\bigskip\\ Here this $\mathcal{I}_n(\hat{\theta}_n)$ is the observed information: $-\sum\frac{\partial^2\log f(y_i;\hat{\theta}_n)}{\partial\theta^2}$
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{Why does the robust large sample interval work?}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+P\left(\underbrace{\frac{\sqrt{n}|\hat{\theta}_n-\theta_0|}{\sqrt{\lambda}}}_{\overset{d}{\rightarrow}N(0,1)}\underbrace{\frac{\sqrt{\lambda}}{\sqrt{\hat{\lambda}}}}_{\overset{p}{\rightarrow}1}\leq Z_{\alpha/2}\right)\rightarrow 1-\alpha
+\end{equation*}
+\end{flashcard}
+\begin{flashcard}[Definition]{One parameter exponential family general case of robust large sample intervals}
+{\begin{align*}
+l_i(\theta;Y_i)&=a(\theta)b(Y_i)+c(\theta)\\
+\textrm{Where: }
+\sum l_i(\hat{\theta}_n;Y_i)&=0\textrm{ and }
+\sum b(Y_i)=-n\frac{\partial c(\hat{\theta}_n)}{\partial\theta}\left(\frac{\partial a(\hat{\theta}_n)}{\partial\theta}\right)^{-1}\\
+\textrm{Here: }
+\frac{n}{\mathcal{I}_n(\hat{\theta}_n)}&=-\left\{\frac{\partial^2 a(\hat{\theta}_n)}{\partial\theta^2}\frac{\sum b(Y_i)}{n}+\frac{\partial^2 c(\hat{\theta}_n)}{\partial\theta^2}\right\}^{-1}\\
+\textrm{therefore: }
+\hat{\lambda}&=\frac{n[a(\hat{\theta}_n)]^2\sum\left[b(Y_i)-\frac{\sum b(Y_i)}{n}\right]^2}{[\mathcal{I}_n(\hat{\theta}_n)]^2}
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{Weighted Least Squares Linear Regression if W misspecified}
+{\begin{align*}
+Y&\sim MVN(X,\underbar{$\beta$}, \sigma^2W)\textrm{ and } W=diag\{w_i\}=
+\begin{bmatrix}
+w_i&\dots&0\\
+\vdots&\ddots&\vdots\\
+0&\dots&w_n
+\end{bmatrix}
+\intertext{The weighted least squares estimate of $\underbar{$\beta$}$ is}
+\hat{\beta}_{wls}&=X'W^{-1}X)^{-1}X'W^{-1}Y\\
+\intertext{This is a \textbf{consistent} estimator of $\underbar{$\beta$}$ ever if the $Y$s are not normal and the covariance matrix is not proportional to $W$. BUT if $W$ is misspecified that the variance-covariance matrix is not estimated by $n/\mathcal{I}$. So you need the robust variance estimator:}
+\hat{\Lambda}&=n(X'W^{-1}X)^{-1}X'W^{-1}diag\{r_i^2\}W^{-1}X(X'W^{-1}X)^{-1}
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{If $\underbar{Z}\sim MVN(\underbar{$\mu$},\Sigma)$ how is $AZ$ distributed?}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+AZ\sim MVN(A\underbar{$\mu$},A\Sigma A')
+\end{equation*}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{If $\underbar{Z}\sim MVN(\underbar{$\mu$},\Sigma)$ what would be distributed as $\chi^2_k$?}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+(\underbar{Z}-\underbar{$\mu$})'\Sigma^{-1}(\underbar{Z}-\underbar{$\mu$})\sim \chi^2_k
+\end{equation*}
+This is only when $\Sigma$ is full rank.
+{\begin{align*}
+\Sigma&=\sigma^2\underbar{$\mathcal{I}$}\\
+(\underbar{Z}-\underbar{$\mu$})'\Sigma^{-1}(\underbar{Z}-\underbar{$\mu$})&=\Sigma(Z_i-\mu_i)^2/\sigma^2\\
+f_{\underbar{z}}(Z)&=\frac{1}{(2\pi)^{k/2}|\Sigma|^{1/2}}\exp\left\{-\frac{1}{2}(Z-\underbar{$\mu$})'\Sigma^{-1}(Z-\underbar{$\mu$})\right\}
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Definition]{Size of a test}
+\bigskip\bigskip
+{\begin{align*}
+P(\textrm{Choose $H_1$ when $H_0$ is true})&=P(\underbar{X}\in C_\delta|H_0)=P_0(\underbar{X}\in C_\delta)\\
+&=P_0(\delta(\underbar{X})=1)\\
+&=E_0[\delta(\underbar{X})]=E[\delta(\underbar{X})|H_0]\\
+&=\int_{C_\delta}f(\underbar{X};\theta_0)d\underbar{X}\\
+&=\alpha
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Definition]{Power}
+\bigskip\bigskip
+{\begin{align*}
+1-P(\textrm{Choose $H_0$ when $H_1$ is true})&=P(\textrm{Choose $H_1$ when $H_1$ is true})\\
+&=P_1(\underbar{X}\in C_\delta)=P_1(\delta(\underbar{X})=1)\\
+&=E_1[\delta(\underbar{X})]\\
+&=\int_{C_\delta}f(\underbar{X};\theta_1)d\underbar{X}\\
+&=1-\beta
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{General Setup for size and power}
+{\begin{align*}
+X_1,...,X_n&\overset{iid}{\sim}N(0,1)\\
+H_0:\theta=0&\textrm{ and } H_1:\theta=1\\
+\textrm{Test Stat: }\delta(\underbar{X})&=\begin{cases}
+1&\bar{X}_n>c\\
+0&\bar{X}_n\leq c\\
+\end{cases}\\
+\textrm{Critical Region: }C_\delta&=\{\underbar{X}:\bar{X}_n>c\}\\
+\alpha&=P_0(\bar{X}_n>c)=P(\sqrt{n}\bar{X}_n>\sqrt{n}c)=1-\Phi[\sqrt{n}c]\\
+\beta&=P_1(\bar{X}_n\leq c)=P_1\left(\sqrt{n}\frac{(\bar{X}_n-\mu_1)}{\sigma}\leq\sqrt{n}\frac{(c-\mu_1)}{\sigma}\right)\\
+&=\Phi\left[\sqrt{n}\frac{(c-\mu_1)}{\sigma}\right]
+\end{align*}}
+\end{flashcard}
+%%Print from here
+\begin{flashcard}[Definition]{Neyman-Pearson Lemma}
+\bigskip\bigskip\bigskip
+Using the LR will yield a most powerful test of size $\alpha$
+\end{flashcard}
+\begin{flashcard}[Definition]{Significance Testing}
+\begin{itemize}
+\item Statistical procedure for measuring the strength of evidence against the null hypothesis - R.A. Fisher 
+\item takes a test stat $T(\underbar{X})$ where 
+\begin{enumerate}
+\item Larger values of $T(\underbar{X})$ represents strong evidence of departure from $H_0$.
+\item Distribution of $T(\underbar{X})$ under $H_0$ is known
+\item For given observations $\underbar{x}$, the p-value is
+\begin{equation*}
+p-value=P(T(\underbar{X})\geq T(\underbar{x})|H_0)
+\end{equation*}
+\end{enumerate}
+\item there are no rejection regions or alternative hypotheses.
+\item p-value are always in the tails of the null distribution
+\item answers ``How do I interpret these observations as evidence"
+\end{itemize}
+\end{flashcard}
+\begin{flashcard}[Definition]{The Power Function}
+\bigskip\bigskip
+The power function is the probability of rejecting $H_0$ (defined over \\$\Theta=\Theta_0\cup \Theta_1$)
+\begin{equation*}
+1-\beta(\theta)=E_\theta[\delta(\underbar{X})] \textrm{  for  }\theta\in\Theta
+\end{equation*}
+\end{flashcard}
+\begin{flashcard}[Definition]{Uniformly Most Powerful test}
+\bigskip\bigskip\bigskip
+When $\delta(\underbar{X})$ is free of the alternative hypothesis, if N-P holds, then $\delta(\underbar{X})$ is UMP.
+\end{flashcard}
+\begin{flashcard}[Definition]{Unbiasedness of test}
+\bigskip\bigskip\bigskip
+As long as the power $\geq$ size of the test, it is unbiased. In fancy speak: a size $\alpha$ test of $H_0:\theta\in\Theta_0$ vs. $H_1:\theta\in\Theta_1$ is unbiased if
+\begin{equation*}
+\inf_{\theta\in\Theta_1}1-\beta(\theta)\geq\alpha
+\end{equation*}
+\bigskip\\
+UMP tests are unbiased. If a UMP test does not exist (like in 2-sided case) you can use UMPU - among unbiased tests, the UMP.
+\end{flashcard}
+\begin{flashcard}[Definition]{Composite Hypothesis Power Function}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+P_\theta(Reject\:H_0)=1-\beta(\theta)=E_\theta[\delta(\underbar{X})]\textrm{ for }\theta\in\Theta
+\end{equation*}
+\end{flashcard}
+\begin{flashcard}[Definition]{Composite Hypothesis Size}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+\alpha=\sup_{\theta\in\Theta_0}1-\beta(\theta)=\sup_{\theta\in\Theta_0}E_\theta[\delta(\underbar{X})]
+\end{equation*}
+\end{flashcard}
+\begin{flashcard}[Definition]{Composite Hypothesis Consistency}
+\bigskip\bigskip\bigskip
+A series of tests $\delta_1,...,\delta_n$ is consistent versus the alternative if $1-\beta_{\delta_n}(\theta)1\rightarrow1$ as $n\rightarrow \infty$
+\end{flashcard}
+\begin{flashcard}[Definition]{Generalized Likelihood Ratio Test}
+\bigskip\bigskip\bigskip
+Reject $H_0$ if\\
+\begin{equation*}
+\lambda(\underbar{X})=\frac{\sup_{\theta\in\Theta_0}f(\underbar{X};\theta)}{\sup_{\theta\in\Theta}f(\underbar{X});\theta)}=\inf_{\theta\in\Theta}\sup_{\theta\in\Theta_0}f(\underbar{X};\theta)
+\end{equation*}
+is too small.\\\\Specifically, reject $H_0:\theta\in\Theta_0$ if $\lambda(\underbar{X})\leq\lambda_0$ where $\alpha=\sup_{\theta\in\Theta_0}P_\theta(\lambda(\underbar{X})\leq\lambda_0)$.
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{Interpreting GLRT}
+\bigskip\bigskip\bigskip
+Do not interpret test as ``evidence" for or against a composite hypothesis. It is just saying you can find one simple alternative that is better supported than each null hypothesis. It does not mean that the alternative as a set is better than the set of null hypothesis.
+\end{flashcard}
+\begin{flashcard}[Definition]{Monotone Likelihood Ratio Property}
+\bigskip\bigskip\bigskip
+A family of pdfs or pmfs with univariable random variable t and a parameter $\theta$ has a MLR if 
+\begin{equation*}
+\forall\:\theta_2>\theta_1\textrm{ we have that } g(t|\theta_2)/g(t|\theta_1) \textrm{ is a monotone }(\uparrow\textrm{ or }\downarrow) \textrm{ function of t.}
+\end{equation*}
+\end{flashcard}
+\begin{flashcard}[Definition]{Karlin-Rubin Theorem}
+\bigskip\bigskip\bigskip
+Let $T(\underbar{X})$ be a sufficient statistic for $\theta$. If $\{g(t|\theta);\theta\in\Theta\}$ has the MLR property, then for any $t_0$ the test of $H_0:\theta\leq\theta_0$ vs $H_1:\theta>\theta_0$ rejects if $T(\underbar{X})$ is a UMP test of size $\alpha=P_{\theta_0}(T(\underbar{X})>t_0)$
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{Exponential Family MLRs}
+\bigskip
+In the exponential family, we have $h(\underbar{X})c(\theta)\exp\{w(\theta)T(\underbar{X})\}$. If $w(\theta)$ is increasing, by Karlin-Rubin test:
+{\begin{align*}
+\delta(\underbar{X})=\begin{cases}
+1&T(\underbar{X})>t_0\\
+0&T(\underbar{X})<t_0\\
+\gamma&T(\underbar{X})=t_0
+\end{cases}
+\end{align*}}
+is UMP with size $\alpha=P_{\theta_0}(T(\underbar{X})>t_0)$ for testing $(\theta_1>\theta_0)$
+{\begin{align*}
+\frac{f(\underbar{X};\theta_1)}{f(\underbar{X};\theta_0)}>k\iff\frac{c(\theta_1)\exp\{w(\theta_1)T(\underbar{X})\}}{c(\theta_0)\exp\{w(\theta_0)T(\underbar{X})\}}>k\iff T(\underbar{X})[w(\theta_1)-w(\theta_0)]>k^*
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{GLRT distribution}
+\bigskip\bigskip\bigskip
+In a large sample...
+\begin{equation*}
+-2\log\lambda(\underbar{X})\overset{d}{\rightarrow}\chi^2_{d-d_0}
+\end{equation*}
+where dim$\Theta=d$ and dim$\theta_0=d_0$
+\end{flashcard}
+\begin{flashcard}[Definition]{Wald Test}
+\bigskip\bigskip\bigskip
+Wald tests are based on an estimate of the information that is consistent under either the null or alternative hypothesis. A Wald test for the MLE is based on the asymptotic normality of the MLE.
+{\begin{align*}
+\frac{(\hat{\theta}_n-\theta_0)}{\sqrt{Var(\hat{\theta}_n)}}&\sim N(0,1)\\
+\frac{(\hat{\theta}_n-\theta_0)^2}{Var(\hat{\theta_n})}&\sim\chi^2_1
+\end{align*}}
+Not invariant to transformations of the parameter space. Do not work well when the true parameter is near the edge of the parameter space because the normal approximation often fails.
+\end{flashcard}
+\begin{flashcard}[Definition]{Score test statistic}
+\bigskip
+{\begin{align*}
+\frac{S_n(\theta_0)}{\sqrt{\mathcal{I}_n(\theta_0)}}&\sim N(0,1)\\
+\frac{[S_n(\theta_0)]^2}{\mathcal{I}_n(\theta_0)}&\sim\chi^2_1
+\end{align*}}
+This holds ins large samples under $H_0$ because of AN of score function. Notice the information is calculated under the null hypothesis. \\Examples:
+\begin{itemize}
+\item Cochran-Mantel-Haenzel test
+\item Log-Rank test
+\end{itemize}
+Most powerful test for `small' deviations from $H_0$ by N-P lemma.
+\end{flashcard}
+\begin{flashcard}[Definition]{How is regression GLRT distributed when using $\hat{\sigma}$ instead of $\sigma$}
+\bigskip
+You can estimate $\sigma^2$ with $\hat{\sigma}^2$
+\begin{equation*}
+-2\log\lambda(X)\approx\frac{[RSS(x_1)-RSS(x_1,x_2)]/(p_l-p_s)}{RSS(x_1,x_2)/(n-p_l)}\sim F_{p_l-p_s,n-p_l}
+\end{equation*}
+where $p_i$ is the number of parameters in model $i$\\\\
+Note $F_{1,n-3}\rightarrow\chi^2_1$ as $n\rightarrow\infty$
+\end{flashcard}
+\begin{flashcard}[Definition]{FDR from 2x2 table}
+\bigskip\bigskip
+\begin{center}
+{\begin{tabular}{l|c|c|r}
+\hline
+&\textrm{$H_0$ Accepted}&\textrm{$H_0$ Rejected}&Total\\
+\hline
+\textrm{$H_0$ True}& U & V& $M_0$\\
+\hline
+\textrm{$H_0$ False}&T&S&$M_1$\\
+\hline
+\textrm{Total}&M-R&R&M\\
+\hline
+\end{tabular}}
+\end{center}
+$FDP_0=V/R$\\
+$FDR=E[FDP_0]=E\left[\frac{V}{R}|R>0\right]P(R>0)$
+\end{flashcard}
+\begin{flashcard}[Definition]{Bootstrap}
+The bootstrap algorithm:
+\begin{enumerate}
+\item Draw bootstrap sample
+\item Compute a statistic
+\item Repeat B times to get a new statistic each time
+\item Compute:
+\begin{equation*}
+V_{Boot}=\frac{1}{B}\left(T^*_{n,i}-\frac{1}{n}\sum T^*_{n,j}\right)^2
+\end{equation*}
+\item Use $V_{Boot}$ as an approximation to the variance of the test statistic
+\item Generate CI using: Normal Interval, Percentile Interval, Pivotal Interval, Bias-Corrected Interval
+\end{enumerate}
+\end{flashcard}
+\begin{flashcard}[Definition]{Law of the Iterated Logarithm}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+\limsup_{n\rightarrow\infty}\frac{S_n}{\sqrt{n\log\log n}}=\sqrt{2} \textrm{ almost surely}
+\end{equation*}
+\bigskip\\Here limsup is the limiting supremum.
+\end{flashcard}
+\begin{flashcard}[Definition]{Marginal Likelihood}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+L_m(\theta;\underbar{x})=f(\underbar{x};\theta)=\int_\Gamma f(\underbar{x};\theta,\gamma)g(\gamma)d\gamma
+\end{equation*}
+\bigskip\\
+$g(\gamma)$ is the pdf
+\end{flashcard}
+\begin{flashcard}[Definition]{Estimated Likelihood}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+L_e(\theta;x)=L_e(\theta,\hat{y}l\underbar{x})
+\end{equation*}
+\bigskip\\
+where $\hat{\gamma}$ is an estimator of $\gamma$ based on the data. This is just a fixed estimate, versus the profile likelihood which finds the best guess conditional on the parameter value.
+\end{flashcard}
+\begin{flashcard}[Definition]{Profile Likelihood}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+L_p(\theta;\underbar{x})=\sup_{\gamma\in\Gamma}L(\theta,\gamma;\underbar{x})=L(\theta,\hat{\gamma}(\theta);\underbar{x})
+\end{equation*}
+\bigskip\\
+$\hat{\gamma}(\theta)$ is the MLE of $\gamma$ given $\theta$.
+\end{flashcard}
+\begin{flashcard}[Definition]{Conditional Likelihood}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+L_c(\theta;\underbar{x})=f(\underbar{x}|\theta,S(\underbar{x}))
+\end{equation*}
+\bigskip\\
+$S(\underbar{x})$ is a special statistic and conditioning on it makes the likelihood free of $\gamma$.
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{Quasi-log-likelihood regression example}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+l(\beta|\underbar{y},\underbar{z})=\frac{1}{\sigma^2}\sum y_i(\beta_0+\beta_1z_i)-e^{(\beta_0+\beta_1z_i)}-\log y_i!
+\end{equation*}
+\end{flashcard}
+\begin{flashcard}[Definition]{Limiting Expectation}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+\lim_{n\rightarrow\infty}E[X_n]
+\end{equation*}
+\end{flashcard}
+\begin{flashcard}[Definition]{Asymptotic Expectation}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+E[\lim_{n\rightarrow\infty}X_n]
+\end{equation*}
+\end{flashcard}
+\begin{flashcard}[Definition]{Bayes Factor}
+\bigskip\bigskip\bigskip
+A likelihood ratio that is a ratio of marginal likelihoods is called a Bayes factor:
+\begin{equation*}
+BF_{0,1}\frac{P(\underbar{X}|H_0)}{P(\underbar{X}|H_1)}=\frac{\int _{\Theta_0}f(x;\theta)g_0(\theta;\gamma_0)d\theta}{\int_{\Theta_1} f(x;\theta)g_1(\theta;\gamma_1)d\theta}=\frac{f(X;\theta_0)}{f(X;\theta_1)}=\frac{L_n(\theta_0)}{L_n(\theta_1)}
+\end{equation*}
+\begin{equation*}
+BF_{0,1}=\frac{P(H_0|X=x)P(H_1)}{P(H_1|X=x)P(H_0)}
+\end{equation*}
+\end{flashcard}
+\begin{flashcard}[Definition]{Confidence Interval with Indifference Zone}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+P(\Delta\cap I(\underbar{X})=\emptyset)=2\Phi[-(\delta\sqrt{n}+Z_{\alpha/2})]
+\end{equation*}
+This is good because
+\begin{equation*}
+P(\Delta\cap I(\underbar{X})=\emptyset)\rightarrow 0\textrm{ as }n\rightarrow\infty\textrm{  }\forall\delta\neq0
+\end{equation*}
+and
+\begin{equation*}
+P(\Delta\cap I(\underbar{X})=\emptyset)=\alpha \textrm{ when }\delta=0
+\end{equation*}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{When is t-interval CI valid}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+\bar{X}_n-\bar{Y}_m\pm t_{\alpha/2}^{n+m-2}\sqrt{S^2_p\left(\frac{1}{n}+\frac{1}{m}\right)}
+\end{equation*}
+This CI is valid - in other words has \textbf{exactly} $100(1-\alpha)\%$ coverage probability when
+\begin{enumerate}
+\item The population distribution of each group is normal
+\item The groups have a common variance
+\end{enumerate}
+However in a large sample, the equal-variance t-interval is a valid approximate large sample CI that is robust to non-normality. Either the variances need to be equal OR the sample size of the groups needs to be equal.
+\end{flashcard}
+\begin{flashcard}[Definition]{Randomized Test}
+\bigskip\bigskip
+A randomized test randomly chooses between the competing hypotheses in certain situations:
+{\begin{align*}
+\delta(\underbar{X})=\begin{cases}
+1&\textrm{Choose }H_1\\
+0&\textrm{Choose }H_0\\
+\gamma&\textrm{Choose }H_1\textrm{with probability }\gamma
+\end{cases}
+\end{align*}}
+This is generally done to increase power.
+\end{flashcard}
+\begin{flashcard}[Definition]{N-P Randomized Test}
+\bigskip\bigskip
+N-P LRT:
+{\begin{align*}
+\delta(\underbar{X})=\begin{cases}
+1\textrm{ (Choose $H_1$)}&\frac{f_1(X)}{f_0(X)}>k\\
+\gamma\textrm{ (Choose ?)}&\frac{f_1(X)}{f_0(X)}=k\\
+0\textrm{ (Choose $H_0$)}&\frac{f_1(X)}{f_0(X)}<k
+\end{cases}
+\end{align*}}
+By randomizing on the decision boundary we can increase power and maintain a test of certain size
+\end{flashcard}
+\begin{flashcard}[Definition]{Strength of Evidence from a Hypothesis test}
+\bigskip\bigskip\bigskip
+Support of $H_1$ over $H_0$ by the factor:
+\begin{equation*}
+\frac{P(\delta(\underbar{x})=1|H_1)}{P(\delta(\underbar{x})=1|H_0)}=\frac{1-\beta}{\alpha}
+\end{equation*}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{If the outcome only of the test is reported, what size study provides more evidence in support of $H_1$ over $H_0$?}
+\bigskip\bigskip\bigskip\bigskip
+The larger study provides more evidence
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{If the p-value is reported, what size study provides more evidence in support of $H_1$ over $H_0$?}
+\bigskip\bigskip\bigskip\bigskip
+The smaller study provides more evidence
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{Post-hoc power calculations}
+\bigskip\bigskip\bigskip\bigskip
+The observed power of a test is a simple 1-to-1 function of the p-value.
+\end{flashcard}
+\begin{flashcard}[Definition]{What is the collection of null hypotheses that fail to reject at the $\alpha$ level?}
+\bigskip\bigskip\bigskip\bigskip
+The $100(1-\alpha)\%$ confidence interval!
+\end{flashcard}
+\begin{flashcard}[Definition]{Bounds on Bayes Factor}
+\bigskip\bigskip\bigskip\bigskip
+\begin{equation*}
+\frac{\inf_{\theta\in\Theta_0}L(\theta)}{\sup_{\theta\in\Theta_1}L(\theta)}\leq BF_{0,1}\leq\frac{\sup_{\theta\in\Theta_0}L(\theta)}{\inf_{\theta\in\Theta_1}L(\theta)}
+\end{equation*}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{If $T\sim t_{\alpha/2}^{n+m-k}$ how is $T^2$ distributed?}
+\bigskip\bigskip\bigskip\bigskip
+\begin{equation*}
+T^2\sim F_{k-2,n-k}
+\end{equation*}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{F-test robustness}
+\bigskip\bigskip\bigskip\bigskip
+The F-test for means is robust to departures from normality (but sensitive to equal variance assumption or equal n in each group), BUT the F-test for variances is not! LALALa.
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{Working Model is Correct}
+\footnotesize{\begin{itemize}
+\item $\hat{\theta}_n$ (the MLE of $\theta$) is consistent for $\theta_0$ as $n\rightarrow\infty$
+\item As $n\rightarrow \infty$ $\frac{L_n(\theta)}{L_n(\theta_0)}\overset{a.s.}{\longrightarrow} 0$
+\item The probability of observing misleading evidence:
+{\begin{align*}
+&P\left(\frac{L_n(\theta)}{L_n(\theta_0)}\geq k\right)\rightarrow 0\\
+&P\left(\frac{L_n(\theta_n)}{L_n(\theta_0)}\geq k\right)\rightarrow \Phi\left[-\frac{\log k}{|c|}-\frac{|c|}{2}\right]\\
+\textrm{Where: }&\theta_n=\theta_0+c/\sqrt{n}
+\end{align*}}
+\item The asymptotic behavior of the likelihood ratio is:
+\begin{equation*}
+\log\left\{\frac{\L_n(\theta_n)}{L_n(\theta_0)}\right\}\overset{d}{\longrightarrow}N\left(\frac{-c^2}{2},c^2\right)
+\end{equation*}
+\item The maximum probability of observing misleading evidence is:
+\begin{equation*}
+\max P\left(\frac{L_n(\theta)}{L_n(\theta_0)}\geq k\right)\rightarrow \Phi\left[-\sqrt{2\log k}\right]
+\end{equation*}
+\end{itemize}}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{Working Model is Incorrect}
+\footnotesize{\begin{itemize}
+\item $\hat{\theta}_n$ is the MLE and $\hat{\theta}_n\rightarrow \theta_g$ as $n\rightarrow \infty$ and $\theta_g=argmaxE_g[\log f(x_i;\theta)]$
+\item As $n\rightarrow\infty$:
+ $\frac{L_n(\theta)}{L_n(\theta_g)}\overset{a.s}{\longrightarrow}0$
+\item The probability of observing misleading evidence:
+{\begin{align*}
+&P\left(\frac{L_n(\theta)}{L_n(\theta_0)}\geq k\right)\rightarrow 0\\
+&P\left(\frac{L_n(\theta_n)}{L_n(\theta_0)}\geq k\right)\rightarrow \Phi\left[-\frac{\log k}{|c|\sqrt{b}}-\frac{|c|a}{2\sqrt{b}}\right] \textrm{Where: }\theta_n=\theta_0+c/\sqrt{n}
+\end{align*}}
+\item The asymptotic behavior of the likelihood ratio is:
+\begin{equation*}
+\log\left\{\frac{\L_n(\theta_n)}{L_n(\theta_0)}\right\}\overset{d}{\longrightarrow}N\left(\frac{-c^2a}{2},c^2b\right)
+\end{equation*}
+\item The maximum probability of observing misleading evidence is:
+\begin{equation*}
+\max P\left(\frac{L_n(\theta)}{L_n(\theta_0)}\geq k\right)\rightarrow \Phi\left[-\sqrt{2\log k}\sqrt{\frac{a}{b}}\right]
+\end{equation*}
+\end{itemize}}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{Under the robust working model}
+\footnotesize{\begin{itemize}
+\item $\hat{\theta}_n$ is the MLE and $\hat{\theta}_n\rightarrow \theta_g$ as $n\rightarrow \infty$ and $\theta_g=argmaxE_g[\log f(x_i;\theta)]$
+\item As $n\rightarrow\infty$: 
+$\frac{L_n(\theta)}{L_n(\theta_g)}\overset{a.s}{\longrightarrow}0$
+\item The probability of observing misleading evidence:
+\begin{align*}
+&P\left(\frac{L_n(\theta)}{L_n(\theta_0)}\geq k\right)\rightarrow 0\\
+&P\left(\frac{L_n(\theta_n)}{L_n(\theta_0)}\geq k\right)\rightarrow \Phi\left[-\frac{\log k\sqrt{b}}{|c|a}-\frac{|c|a}{2\sqrt{b}}\right]
+\textrm{Where: }\theta_n=\theta_0+c/\sqrt{n}
+\end{align*}
+\item The asymptotic behavior of the likelihood ratio is:
+\begin{equation*}
+\frac{\hat{a}}{\hat{b}}\log\left\{\frac{\L_n(\theta_n)}{L_n(\theta_0)}\right\}\overset{d}{\longrightarrow}N\left(\frac{-c^2a^2}{2b},\frac{c^2a^2}{b}\right)
+\end{equation*}
+\item The maximum probability of observing misleading evidence is:
+\begin{equation*}
+\max P\left(\frac{L_n(\theta)}{L_n(\theta_0)}\geq k\right)\rightarrow \Phi\left[-\sqrt{2\log k}\right]
+\end{equation*}
+\end{itemize}}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{Doing Quasi-likelihood}
+\bigskip
+\begin{enumerate}
+\item Start with the score-function:
+\begin{equation*}
+\sum\frac{Y_i-E[Y_i]}{Var[Y_i]}
+\end{equation*}
+\item Set score function equal to 0 and get solve for $\theta$ to get a quasi-MLE
+\item Then you also get a quasi-information in order to better estimate the variance
+\item If you want to get the quasi log likelihood, you integrate the quasi-score function
+\end{enumerate}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{Trick to show $MSE=Var[\hat{\theta}]+b^2(\hat{\theta})$}
+\bigskip\bigskip\bigskip
+JUST ADD AND SUBTRACT $E[\hat{\theta}]$ WHAT? yeah. that was a comp question. PLEASE GIVE US THAT AGIAN!
+{\begin{align*}
+E[(\hat{\theta}_n-\theta)^2]&=E[(\hat{\theta}_n-E[\hat{\theta}]+E[\hat{\theta}]-\theta)2]\\
+&=E[(\hat{\theta}_n-E[\hat{\theta}_n])^2]+(E[\hat{\theta}]-\theta)^2\\
+&=Var[\hat{\theta}]+b^2(\hat{\theta})
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{Variance of $X^2$ in Normal Distribution}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+Var(X_2)&=E[X^4]-(E[X^2])^2\\
+&=\mu^4+6\mu^2\sigma^2+3\sigma^2-(\sigma^2+\mu^2)^2\\
+&=\mu^4+6\mu^2\sigma^2+3\sigma^2-\sigma^4-2\sigma^2\mu^2-\mu^4\\
+&=4\mu^2\sigma^2+3\sigma^2-\sigma^4
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{Fisher's Information for Normal}
+\bigskip\bigskip\bigskip
+\huge{{\begin{align*}
+\begin{bmatrix}
+\frac{1}{\sigma^2}&0\\
+0&\frac{1}{2\sigma^4}
+\end{bmatrix}
+\end{align*}}}
+\end{flashcard}
+%Print from here 2
+\begin{flashcard}[Pro Tip]{Find the median of a distribution}
+\bigskip\bigskip\bigskip
+\huge{
+Set the cdf=$\frac{1}{2}$
+}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{Location Scale MGF}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+Mgf_x(t)=Mgf_{\sigma z+\mu}(t)=e^{\mu t}Mgf_z(\sigma t)
+\end{equation*}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{Logit($\beta_0+\beta_1X$)}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+\Lambda(\beta_0+\beta_1X)=\frac{\exp\{\beta_0+\beta_1X\}}{1+\exp\{\beta_0+\beta_1X\}}
+\end{equation*}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{Probit Model}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+P(Y=1|X)=\Phi(\beta_0+\beta_1X)
+\end{equation*}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{Show Asymptotic Bias}
+\bigskip\bigskip\bigskip
+Arrange what you are interested in to see where it goes in the limit (multiply by $\sqrt{n}$) If there is any bias, then that is the asymptotic bias.
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{Exact Binomial Distribution, McNemars}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+Binomial(b+c,0.5) \rightarrow N((b+c)(0.5),(b+c)(0.5)^2)\\
+\intertext{Then compare this to b:}
+\frac{b-\left(\frac{b+c}{2}\right)}{\frac{\sqrt{b+c}}{2}}\sim N(0,1)\\
+\frac{b-c}{\sqrt{b+c}}\sim N(0,1)\\
+\frac{(b-c)^2}{b+c}\sim \chi^2_1
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Proof]{Goodness of Fit Classic Chi-Square Formula}
+\small{
+{\begin{align*}
+\underbar{X}\sim&Mult(n,\underbar{$\theta$})\:\:\:\lambda(\underbar{X})=\prod_{i=1}^m\left(\frac{\gamma_i}{\hat{\theta}_i}\right)^{x_i}\\
+\textrm{  $n\gamma_i$=expected cell count and $X_i=n\hat{\theta}_i$}\\
+-2\log(\lambda(\underbar{X}))&=-2\sum n\hat{\theta}_i\log\left(\frac{\gamma_i}{\hat{\theta}_i}\right)\\
+\textrm{By Taylor Series Expansion:  }
+x\log\left(\frac{x}{x_0}\right)&\approx(x-x_0)+\frac{(x-x_0)^2}{2x_0}...\\
+&=n2\sum(\hat{\theta}_i-\gamma_i)+\frac{2n\sum(\hat{\theta}_i-\gamma_i)^2}{2\gamma_i}\\
+\sum\hat{\theta}_i&=\sum\gamma_i=1\\
+&=\sum_{i=1}^m\frac{(x_i-n\gamma_i)^2}{n\gamma_i}
+\end{align*}}}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{$E(z_1|z_2)$ when $(z_1,z_2)$ is bivariate Normal}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+E(z_1|z_2)&=E(z_1)+\frac{Cov(z_1,z_2)}{Var(z_2)}(z_2-E(z_2))\\
+Var(z_1|z_2)&=Var(z_1)-\frac{Cov^2(z_1,z_2)}{Var(z_2)}
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{Posterior Normal Distribution}
+\bigskip\bigskip\bigskip
+\begin{align*}
+\mu|x_1,...,x_n\sim N\left(\frac{\sigma_0^2}{\sigma^2+n\sigma^2_0}\bar{x}+\frac{\sigma^2}{\sigma^2+n\sigma^2_0}\mu_0,\left(\frac{1}{\sigma^2_0}+\frac{n}{\sigma^2}\right)^{-1}\right)
+\end{align*}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{How can you split up $(1-p)^w$}
+\bigskip\bigskip\bigskip
+\begin{equation*}
+(1-p)^x(1-p)^{w-x}
+\end{equation*}
+This is sometimes useful if you are trying to recreate a binomial distribution and you have $(something)^w$
+\end{flashcard}
+\begin{flashcard}[Proof]{Prove the accept-reject algorithm}
+\small{
+{\begin{align*}
+P(Y\leq y)&=P\left(V\leq y|U\leq\frac{1}{M}\frac{f_y(v)}{f_v(v)}\right)\\
+&=\frac{P\left(V\leq y,U\leq\frac{1}{M}\frac{f_y(v)}{f_v(v)}\right)}{P\left(U\leq\frac{1}{M}\frac{f_y(v)}{f_v(v)}\right)}\\
+&=\frac{\int_{-\infty}^y\int_0^{\frac{1}{M}\frac{f_y(v)}{f_v(y)}}1duf_v(v)dv}{\int_{-\infty}^\infty \int_{0}^{\frac{1}{M}\frac{f_y(v)}{f_v(v)}}1duf_v(v)dv}\\
+&=\frac{\int_{-\infty}^y\frac{1}{M}\frac{f_y(v)}{f_v(v)}f_v(v)dv}{\int_{-\infty}^\infty\frac{1}{M}\frac{f_y(v)}{f_v(v)}f_v(v)dv}\\
+&=\frac{\int_{-\infty}^yf_y(v)dv}{\int_{-\infty}^\infty f_y(v)dv}=\frac{F_Y(y)}{1}=F_Y(y)
+\end{align*}}}
+\end{flashcard}
+\begin{flashcard}[Proof]{Maximizing the likelihood under model failure}
+\bigskip\bigskip
+{\begin{align*}
+\hat{\theta}_n&=\argmax_{\theta\in\Theta}\frac{1}{n}\sum_i\log f(X_i;\theta)\\
+&=\argmin_{\theta\in\Theta}\frac{1}{n}\sum_i\log\frac{1}{f(X_i;\theta)}\\
+&=\argmin_{\theta\in\Theta}\frac{1}{n}\sum_i\log\frac{1}{f(X_i;\theta)}+\frac{1}{n}\log\hat{g}(x_i)\\
+&=\argmin_{\theta\in\Theta}\frac{1}{n}\sum_i\log\frac{\hat{g}(x_i)}{f(X_i;\theta)}
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Proof]{Prove the Memoryless Property of Exponential}
+{\begin{align*}
+\intertext{Assume $t>s$}
+P(X>t|X>s)&=P(X>t-s)\\
+P(X>t|X>s)&=\frac{P(X>t,X>s)}{P(X>s)}\\
+&=\frac{P(X>t)}{P(X>s)}=\frac{1-F(t)}{1-F(s)}\\
+&=\frac{1-(1-e^{-t\beta})}{1-(1-e^{-s\beta})}\\
+&=e^{-\beta(t-s)}\\
+&=1-F(t-s)\\
+&=P(X>t-s)
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Proof]{$\frac{(n-1)S^2}{\sigma^2}\sim\chi^2_{n-1}$}
+\small{
+{\begin{align*}
+\underbrace{\sum_{i=1}^n\left(\frac{X_i-\mu}{\sigma}\right)^2}_{U}&=\underbrace{\sum_{i=1}^n\left(\frac{X_i-\bar{X}}{\sigma}\right)^2}_{V}+\underbrace{\left(\frac{\bar{X}-\mu}{\sigma/\sqrt{n}}\right)^2}_{W}\\
+U&\sim \chi^2(n)\:\:\:W\sim \chi^2(1)\\
+V&=\frac{(n-1)S^2}{\sigma^2}\\ t
+V\perp W &\textrm{ because $\bar{X}\perp S^2$ therefore:}\\
+M_u(t)&=M_V(t)M_W(t)\\
+\frac{1}{(1-2t)^{n/2}}&=M_V(t)\frac{1}{(1-2t)^{1/2}}\\
+M_V(t)&=\frac{1}{(1-2t)^{(n-1)/2}}\\
+V&\sim \chi^2(n-1)
+\end{align*}}}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{Beta $E[X^n]$}
+\bigskip\bigskip
+{\begin{align*}
+E[X^n]=\frac{\Gamma(\alpha+n)\Gamma(\alpha+\beta)}{\Gamma(\alpha+\beta+n)\Gamma(\alpha)}
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Proof]{Central Limit Theorem}
+\small{{\begin{align*}
+\frac{\sqrt{n}(\bar{X}-\mu)}{\sigma}&=\frac{1}{\sqrt{n}}\sum Z_i\:\:M_{\frac{1}{\sqrt{n}}\sum Z_i}(t)=\left(M_y\left(\frac{t}{\sqrt{n}}\right)\right)^n\\
+\textrm{Taylor series: } M_z\left(\frac{t}{\sqrt{n}}\right)&=M_z(0)+M'_z(0)\left(\frac{t}{\sqrt{n}}-0\right)+\frac{M_z''(0)\left(\frac{t}{\sqrt{n}}-0\right)^2}{2!}+...\\
+M'_z(0)&=E(Z)=E\left(\frac{x-\mu}{\sigma}\right)=\frac{E(X)-\mu}{\sigma}=0\\
+M''_z(0)&=Var(Z)+(E(Z))^2=Var\left(\frac{x-\mu}{\sigma}\right)=\frac{1}{\sigma^2}Var(X)=\frac{\sigma^2}{\sigma^2}=1\\
+M_z(0)&=E(e^{0z})=1\\
+M_z\left(\frac{t}{\sqrt{n}}\right)&=1+0+\frac{t^2}{2n}\Rightarrow\left(M_z\left(\frac{t}{\sqrt{n}}\right)\right)^n\approx\left(1+\frac{\frac{t^2}{2}}{n}\right)^n\\
+&\Rightarrow\lim_{n\rightarrow\infty}\left(1+\frac{\frac{t^2}{2}}{n}\right)^n=e^{t^2/2}\\
+\end{align*}}}
+\end{flashcard}
+%Print from here 3
+\begin{flashcard}[Proof]{Kullback-Leibler Divergence}
+{\begin{align*}
+E_g\left[\log\frac{g(x)}{f(x)}\right]&=E_g\left[-\log\frac{f(x)}{g(x)}\right]\\
+E_g\left[-\log\frac{f(x)}{g(x)}\right]&\geq-\log E_g\left[\frac{f(x)}{g(x)}\right]\\
+&\geq-\log(1)\\
+&\geq 0
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{If $E(Y|X)$ is linear then how can you write this in terms of $\mu_x$, $\mu_y$, $\rho_{xy}$, $\sigma_x$, and $\sigma_y$}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+E(Y|X=x)&=a+bx\\
+&=\mu_y-\rho_{xy}\frac{\sigma_y}{\sigma_x}\mu_x+\rho_{xy}\frac{\sigma_y}{\sigma_x}x
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{Inverse Gamma - Normal Posterior}
+\bigskip\bigskip\bigskip
+Normal model with known mean, unknown variance.
+{\begin{align*}
+\sigma^2&\sim IG(\alpha_0,\beta_0)\\
+\underbar{X}&\sim N(\mu, \sigma^2)\\
+Posterior&=IG\left(\alpha_0+\frac{n}{2},\beta_0+\frac{\sum_{i=1}^n(y_i-\mu)^2}{2}\right)
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Proof]{Poisson MGF}
+\bigskip\bigskip
+{\begin{align*}
+E[e^{tx}]&=\sum_{x=0}^\infty e^{tx}\frac{\lambda^xe^{-\lambda}}{x!}\\
+&=e^{-\lambda}\sum_{x=0}^\infty\frac{(e^t\lambda)^x}{x!}\\
+&=e^{-\lambda+\lambda e^t}\\
+&=e^{\lambda(e^t-1)}
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{What is $e^{-\lambda}$ in terms of summation}
+\bigskip\bigskip
+{\begin{align*}
+1&=\sum_{x=0}^\infty\frac{\lambda^xe^{-\lambda}}{x!}\\
+e^{-\lambda}&=\sum_{x=0}^\infty\frac{\lambda^x}{x!}
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{How to get variance of of MOM}
+\bigskip
+\Huge{
+DELTA METHOD}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{Credible Interval}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+LB&=F^{-1}_{\alpha/2}\\
+UB&=F^{-1}_{1-\alpha/2}
+\end{align*}}
+\end{flashcard}
+%Print from here
+\begin{flashcard}[Pro Tip]{Geometric Series}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+\sum_{x=1}^\infty r^x=\frac{r}{1-r}\\
+\sum_{x=0}^\infty r^x=\frac{1}{1-r}
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{Geometric MFG}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+\frac{pe^t}{1-(1-p)e^t}
+\end{align*}}
+\end{flashcard}
+ \cardfrontfoot{Principles of Modern Biostatistics}
+ \begin{flashcard}[Test]{McNemar's Test}
+ McNemar's uses the normal approximation to the Binomial. This requires large sample to be valid.
+ {\begin{align*}
+ \chi^2_1&=\frac{(b-c)^2}{b+c}\\
+ \intertext{To get a p-value:}
+ b&\sim Binomial(b+c,.5)\\
+ p-value&=P(b>b_{obs}|n=b+c, \theta=1/2)\\
+ &P(X\geq x|n,\theta)=\sum_{i=x}^n{n\choose i}.5^n\\
+ \end{align*}}
+ two sided would be this p-value multiplies by 2.
+ \end{flashcard}
+ \begin{flashcard}[Test]{Wilcoxon Sign Rank Test}
+ Tests difference in distribution. For a one sided test, the test statistic is the sum of the ranks. For example if you are testing if group 2 is greater than group 1, then you order all of the estimates and rank them and then take out all of group 2's ranks and add them together!
+ {\begin{align*}
+ p-value=P(W_2\geq w_1)
+ \end{align*}}
+ \end{flashcard}
+\begin{flashcard}[Confidence Interval]{Relative Risk}
+\bigskip\bigskip\bigskip
+CI for Relative Risk:
+{\begin{align*}
+\exp\left\{\log\left(\frac{a/(a+b)}{c/(c+d)}\right)\pm Z_{\alpha/2}\sqrt{\frac{b/a}{b+a}+\frac{d/c}{d+c}}\right\}
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Confidence Interval]{Risk Difference}
+\bigskip\bigskip\bigskip
+CI for Risk Difference:
+{\begin{align*}
+p_1&=\frac{a}{a+b}\\
+n_1&=a+b\\
+p_2&=\frac{c}{c+d}\\
+n_2&=c+d\\
+p_1-p_2&\pm Z_{\alpha/2}\sqrt{\frac{p_1(1-p_1)}{n_1}+\frac{p_2(1-p_2)}{n_2}}
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Confidence Interval]{Odds Ratio}
+\bigskip\bigskip\bigskip
+CI for Odds Ratio:
+{\begin{align*}
+\log\left(\frac{ad}{bc}\right)\pm Z_{\alpha/2}\sqrt{\frac{1}{a}+\frac{1}{b}+\frac{1}{c}+\frac{1}{d}}
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{Semi-partial correlation}
+{\begin{align*}
+\intertext{Regress $X_1$ with all the other covariates}
+X_1&\sim X_2+X_3+X_4
+\intertext{get the errors, $e_1$}
+\intertext{Get the correlation of $e_1$ and $Y$}
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{Partial correlation}
+{\begin{align*}
+\intertext{Regress $X_1$ with all the other covariates}
+X_1&\sim X_2+X_3+X_4
+\intertext{get the errors, $e_1$}
+\intertext{Regress Y with all the remaining covariates}
+Y&\sim X_2+X_3+X_4
+\textrm{  get the errors, $e_Y$}\\
+\intertext{Get the correlation of $e_1$ and $e_Y$}
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Definition]{$95\%$ Confidence Interval}
+\bigskip\bigskip
+The procedure will capture the true parameter $95\%$ of the time. The values come from a procedure that tends to capture the true value $\mu$
+\end{flashcard}
+\begin{flashcard}[Definition]{$95\%$ Support Interval}
+\bigskip\bigskip
+This is the interval that the data supports at the $1/k$ level.
+\end{flashcard}
+\begin{flashcard}[Definition]{$95\%$ Credible Interval}
+\bigskip\bigskip
+$\mu$ is treated as random, the probability that $\mu$ is within these intervals is $95\%$
+\end{flashcard}
+\begin{flashcard}[Assumptions]{Logistic Regression}
+\bigskip
+\begin{itemize}
+\item The outcome needs to be binary
+\item Correct specification of the model
+\item The error terms need to be independent
+\end{itemize}
+\end{flashcard}
+\begin{flashcard}[Interpretation]{$\beta$s a Logistic Regression}
+Let's say we have a model $logit(p)=\beta_0+\beta_1*female$\\
+$\beta_1$ is the log odds ratio for the between the female group and the male group. $\beta_0$ is the log odds for males.\\
+If it were a continuous model, say  $logit(p)=\beta_0+\beta_1*test score$\\
+Then $\beta_1$ would be the difference in the log odds, in other words, for a one-unit increase in test score, the expected change in log odds is $\beta_1$. If you exponentiate it, then $e^{\beta_1}$  is the odds. So for example, If it was 1.18, then you would expect to see an 18$\%$ increase in odds of being in group 1. \\
+If there are two predictors, $logit(p)=\beta_0+\beta_1*female+\beta_2*test score$\\
+Then holding test score constant, the odds of Y=1 for females over the odds of Y=1 for males is $e^{\beta_1}$. \\
+$\beta_2$ is Holding female constant we will see a $X\%$ ($1-e^{\beta_2}$) increase in the odds of Y=1 for a one-unit increase in test score. 
+\end{flashcard}
+\begin{flashcard}[Interpretation]{$\beta$ in a Linear Regression}
+\bigskip\bigskip
+\begin{itemize}
+\item $Y=\beta_0+\beta_1X_1+\beta_2X_2$\\
+\item $\beta_0$ is the value you would predict for Y when all Xs are at the reference group.\\
+\item $\beta_1$ is the difference in the predicted value of Y for each one-unit difference in X1 if X2 remains constant.
+\end{itemize}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{Why would you want to center variables in regression}
+\bigskip\bigskip
+\begin{itemize}
+\item Centering variables so that the predictors have a mean of 0 make the intercept term interpreted as the expected value of $Y_i$ when the predictor values are set to their means. Otherwise the intercept is interpreted as the expected value of $Y_i$ when the predictors are set to 0, which may not be realistic. 
+\item The sample covariance matrix of a matrix of values centered by their sample means is just X'X. 
+\item If a univariate random variable is mean centered, then $var(X)=E(X^2)$ and the variance can be estimated from a sample by looking at the sample mean of squares of the observed values
+\end{itemize}
+\end{flashcard}
+\begin{flashcard}[Equation]{SXX, sum of squares for the $x$s}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+\sum(x_i-\bar{x})^2\\
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Equation]{$SD_x^2$ Sample variance of $x$s}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+SXX/(n-1)
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Equation]{SXY, sum of the cross-products}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+\sum(x_i-\bar{x})(y_i-\bar{y})
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Equation]{$s_{xy}$ Sample covariance}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+SXY/(n-1)
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Equation]{$r_{xy}$ Sample correlation}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+s_{xy}/(SD_xSD_y)
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Equation]{$\hat{e}_i$, the residual}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+\hat{e}_i&=y_i-\hat{E}(Y|X=x_i)\\
+&=y_i-\hat{y}\\
+&=y_i-(\hat{\beta}_0+\hat{\beta}_1x_i)
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Equation]{$\hat{\beta}_1$}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+\hat{\beta}_1&=\frac{SXY}{SXX}\\
+&=r_{xy}\frac{SD_y}{SD_x}\\
+&=r_{xy}\left(\frac{SYY}{SXX}\right)^{1/2}
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Equation]{$\hat{\beta}_0$}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+\bar{y}-\hat{\beta}_1\bar{x}
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Equation]{RSS, residual sum of squares}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+RSS=SYY-\hat{\beta}_1^2SXX
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Equation]{$R^2$}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+R^2&=\frac{SSReg}{SYY}\\
+&=\frac{(SXY)^2}{SXX SYY}\\
+&=r_{xy}\\
+SSReg&=SSY-RSS
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Equation]{$\chi^2$ Expected cells}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+&\frac{row\:sum\times column\:sum}{N}\\
+&=\frac{(a+b)(a+c)}{a+b+c+d} \textrm{ for example for the top left cell}
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Equation]{Chi-square test statistic}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+\chi^2_{(r-1)(c-1)}&=\sum\frac{(O_i-E_i)^2}{E_i}\\
+&=\frac{N(ad-bc)^2}{(a+b)(a+c)(b+d)(c+d)}
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Equation]{95$\%$ CI}
+\bigskip\bigskip\bigskip
+{\begin{align*}
+\bar{X}_n\pm Z_{\alpha/2} \hat{SE}(\bar{X}_n)
+\intertext{For one sided, reject if:}
+\frac{\bar{X}_n-\mu_0}{\hat{SE}(\bar{X}_n)}>1.64\
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Definition]{Mantel-Haenszel test}
+\bigskip\bigskip
+This is an alternative to pooling data from multiple 2x2 tables - it helps avoid Simpson's paradox.\\
+\begin{itemize}
+\item the odds ratio for the ith strata is: $OR_i=\frac{a_id_i}{b_ic_i}$\\
+\item The summary OR is $OR_{pooled}=\frac{\sum a_i\sum d_i}{\sum b_i \sum c_i}$\\
+\item The MH is $O_{MH}=\sum w_i OR_i/\sum w_i$ where $w_i=b_ic_i/N$
+\item $H_0: OR_{MH}=1$ test statistic
+\end{itemize}
+\end{flashcard}
+\begin{flashcard}[Definition]{Fisher's Exact test}
+\bigskip\bigskip
+{\begin{align*}
+\frac{{a+c\choose a}{b+d\choose b}}{{n\choose a+b}}
+\end{align*}}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{Interpret Root MSE}
+\begin{itemize}
+\item The sample standard deviation of the differences between predicted and observed values.
+\item Measure of accuracy
+\end{itemize}
+\end{flashcard}
+\begin{flashcard}[Pro Tip]{Interpret $R^2$}
+\begin{itemize}
+\item The amount of variability the model explains of the response data around its mean
+\item How close the data are to the fitted regression
+\item $\frac{SXY^2}{SXX SYY}$
+\end{itemize}
+\end{flashcard}
+\end{document}
